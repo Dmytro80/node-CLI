@@ -1,16 +1,16 @@
 1. Result of executing "node index.js --action list" command:
 
-   http://joxi.ru/82Q3R3Jt31ZXjr
+   http://joxi.ru/1A5eqeEIkKQ66A
 
 2. Result of executing "node index.js --action get --id 5" command:
 
-   http://joxi.ru/8AnD4D1i0q86Xm
+   http://joxi.ru/Y2LLdL1UendW12
 
 3. Result of executing "node index.js --action add --name Mango --email
    mango@gmail.com --phone 322-22-22" command:
 
-   http://joxi.ru/gmvZLZMUBxQlXm
+   http://joxi.ru/eAOaZa8CE4ZK5m
 
 4. Result of executing "node index.js --action remove --id=3" command:
 
-   http://joxi.ru/DmBeVeKIPNj7dr
+   http://joxi.ru/nAy3a3ltGX3d7m

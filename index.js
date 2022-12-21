@@ -31,14 +31,13 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case 'add':
-      await addContact(name, email, phone);
-      const updatedContacts = await listContacts();
-      console.log(updatedContacts);
+      const newContact = await addContact(name, email, phone);
+      console.log(newContact);
       break;
 
     case 'remove':
-      const deletedContact = await removeContact(id);
-      console.log(deletedContact);
+      await removeContact(id);
+
       break;
 
     default:
