@@ -5,12 +5,45 @@ const {
   removeContact,
 } = require('./contacts');
 
-// addContact('vasja', 'kiki@gmail.com', '567-43-76');
+const { Command } = require('commander');
+const program = new Command();
+program
+  .option('-a, --action <type>', 'choose action')
+  .option('-i, --id <type>', 'user id')
+  .option('-n, --name <type>', 'user name')
+  .option('-e, --email <type>', 'user email')
+  .option('-p, --phone <type>', 'user phone');
 
-async function foo(id) {
-  const a = await removeContact(id);
+program.parse(process.argv);
 
-  console.log(a);
+const argv = program.opts();
+
+async function invokeAction({ action, id, name, email, phone }) {
+  switch (action) {
+    case 'list':
+      const allContacts = await listContacts();
+      console.log(allContacts);
+      break;
+
+    case 'get':
+      const contactById = await getContactById(id);
+      console.log(contactById);
+      break;
+
+    case 'add':
+      await addContact(name, email, phone);
+      const updatedContacts = await listContacts();
+      console.log(updatedContacts);
+      break;
+
+    case 'remove':
+      const deletedContact = await removeContact(id);
+      console.log(deletedContact);
+      break;
+
+    default:
+      console.warn('\x1B[31m Unknown action type!');
+  }
 }
-foo('d044b1f3-30c0-4d2f-afae-59133fb791a2');
-// listContacts();
+
+invokeAction(argv);
